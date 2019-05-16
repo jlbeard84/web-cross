@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
               "node_modules/onsenui/css/onsenui.css",
               "node_modules/onsenui/css/onsen-css-components.css",
               "src/styles.scss"

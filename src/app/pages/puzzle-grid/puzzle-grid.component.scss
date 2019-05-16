@@ -70,6 +70,13 @@ div.puzzle-grid {
                     background-color: lightblue;
                 }
 
+                &.is-drawn {
+                    background-color: black;
+                }
+
+                &.is-missed {
+                    background-color: lightsalmon;    
+                }
             }
 
             div.puzzle-grid-cell:last-child {

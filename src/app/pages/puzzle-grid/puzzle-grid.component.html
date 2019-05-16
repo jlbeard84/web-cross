@@ -15,8 +15,14 @@
             </span>
         </div>
         <div class="puzzle-grid-row-data">
-            <div *ngFor="let colNum of gridCounter" class="puzzle-grid-cell">
-
+            <div 
+                *ngFor="let colNum of gridCounter" 
+                (click)="onCellClick(rowNum, colNum)"
+                [ngClass]="{
+                    'is-drawn': isDrawn(rowNum, colNum),
+                    'is-missed': isMissed(rowNum, colNum)
+                }"
+                class="puzzle-grid-cell">
             </div>
         </div>
     </div>

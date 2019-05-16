@@ -1,0 +1,23 @@
+<div class="puzzle-grid">
+    <div class="puzzle-column-count-row">
+        <div class="row-count-spacer"></div>
+
+        <div class="puzzle-grid-column-count" *ngFor="let colNum of gridCounter" >
+            <span *ngFor="let count of puzzle.colCounts[colNum]" class="col-count">
+                {{count}}
+            </span>
+        </div>
+    </div>
+    <div *ngFor="let rowNum of gridCounter" class="puzzle-grid-row">
+        <div class="puzzle-grid-row-counts">
+            <span *ngFor="let count of puzzle.rowCounts[rowNum]" class="row-count">
+                {{count}}
+            </span>
+        </div>
+        <div class="puzzle-grid-row-data">
+            <div *ngFor="let colNum of gridCounter" class="puzzle-grid-cell">
+
+            </div>
+        </div>
+    </div>
+</div>

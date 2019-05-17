@@ -19,6 +19,7 @@ deploy:
   skip_cleanup: true
   provider: pages
   github_token: $GITHUB_TOKEN
+  fqdn: webcross.jlbeard.com
   local_dir: dist/web-cross/
   on:
     branch: master

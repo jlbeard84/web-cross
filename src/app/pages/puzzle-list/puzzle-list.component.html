@@ -1,0 +1,12 @@
+<div class="puzzle-list">
+    <ons-card *ngFor="let puzzle of puzzleHeaders" [routerLink]="['/puzzle', puzzle.id]">
+        <div class="title">
+          {{puzzle.name}}
+        </div>
+        <div class="content">
+          <div>
+            Size: {{puzzle.size}}
+          </div>
+        </div>
+      </ons-card>
+</div>

@@ -22,7 +22,7 @@ export class PuzzleService {
     }
 
     private loadIntoPuzzleData(puzzleFile: any): PuzzleData {
-        const puzzleData: PuzzleData = JSON.parse(puzzleFile);
+        const puzzleData: PuzzleData = puzzleFile as PuzzleData;
         return puzzleData;
     }
 }

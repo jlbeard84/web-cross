@@ -11,7 +11,8 @@ import * as Services from './services';
 @NgModule({
   declarations: [
     AppComponent,
-    Pages.PuzzleGridComponent
+    Pages.PuzzleGridComponent,
+    Pages.PuzzleListComponent
   ],
   imports: [
     BrowserModule,

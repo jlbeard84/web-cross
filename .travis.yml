@@ -19,6 +19,6 @@ deploy:
   skip_cleanup: true
   provider: pages
   github_token: $GITHUB_TOKEN
-  local_dir: dist/
+  local_dir: dist/web-cross/
   on:
     branch: master

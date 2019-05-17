@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import * as Pages from './pages';
+import * as Services from './services';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import * as Pages from './pages';
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  providers: [],
+  providers: [
+    Services.PuzzleService
+  ],
   bootstrap: [
     AppComponent
   ]

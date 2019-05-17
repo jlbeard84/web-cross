@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Puzzle, PuzzleGridItem } from '../../core/models';
+import { Puzzle, PuzzleGridItem } from '../../models';
 
 @Component({
   selector: 'app-puzzle-grid',

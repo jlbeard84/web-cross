@@ -10,15 +10,32 @@ export class PuzzleService {
     public getPuzzleList(): PuzzleDataHeader[] {
         const headers: PuzzleDataHeader[] = [];
 
-        if (!this.puzzleData || this.puzzleData.length === 0) {
-            this.puzzleData.push(this.loadIntoPuzzleData(Puzzle1));
-        }
+        this.populatePuzzleData();
 
         for (const data of this.puzzleData) {
             headers.push(data);
         }
 
         return headers;
+    }
+
+    public getPuzzleData(id: string): PuzzleData {
+        this.populatePuzzleData();
+
+        for (const puzzleData of this.puzzleData) {
+            if (puzzleData.id === id) {
+                return puzzleData;
+            }
+        }
+
+        return null;
+    }
+
+    private populatePuzzleData(): void {
+        if (!this.puzzleData || this.puzzleData.length === 0) {
+            this.puzzleData = [];
+            this.puzzleData.push(this.loadIntoPuzzleData(Puzzle1));
+        }
     }
 
     private loadIntoPuzzleData(puzzleFile: any): PuzzleData {

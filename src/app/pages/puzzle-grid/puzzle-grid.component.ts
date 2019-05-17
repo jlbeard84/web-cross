@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 
-import { Puzzle, PuzzleGridItem } from '../../models';
+import { Puzzle, PuzzleGridItem, PuzzleData } from '../../models';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { PuzzleService } from 'src/app/services';
 
 @Component({
   selector: 'app-puzzle-grid',
@@ -11,6 +14,7 @@ export class PuzzleGridComponent implements OnInit {
 
     public isLoading: boolean = false;
 
+    public puzzleData: PuzzleData = null;
     public puzzle: Puzzle = null;
     public gridCounter: number[] = [];
     public puzzleGrid: PuzzleGridItem[] = [];
@@ -18,25 +22,32 @@ export class PuzzleGridComponent implements OnInit {
     public remainingDrawableCount: number;
     public missCount: number;
 
-    private readonly sampleData = [
-        0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 1, 1, 0, 0, 0, 1, 1, 0,
-        0, 1, 1, 0, 0, 0, 1, 1, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 1, 1, 1, 1, 1, 1, 1, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0,
-    ];
+    private puzzleId: string = '';
 
-    constructor() {
-    }
+    constructor(
+        private route: ActivatedRoute,
+        private puzzleService: PuzzleService
+    ) { }
 
     public ngOnInit(): void {
         this.isLoading = true;
-        this.loadPuzzle();
-        this.isLoading = false;
+
+        const puzzleId$ = this.route.paramMap.pipe(
+            map((params: ParamMap) =>
+              params.get('id'))
+        );
+
+        puzzleId$.subscribe((id: string) => {
+            this.puzzleData = this.puzzleService.getPuzzleData(id);
+
+            if (!this.puzzleData) {
+                this.isLoading = false;
+                return;
+            }
+
+            this.loadPuzzle();
+            this.isLoading = false;
+        });
     }
 
     public onCellClick(rowNum: number, colNum: number): void {
@@ -73,7 +84,7 @@ export class PuzzleGridComponent implements OnInit {
     }
 
     private loadPuzzle(): void {
-        this.puzzle = new Puzzle(this.sampleData, 9);
+        this.puzzle = new Puzzle(this.puzzleData.data, this.puzzleData.size);
 
         for (let i = 0; i < this.puzzle.gridSize; i++) {
             this.gridCounter.push(i);

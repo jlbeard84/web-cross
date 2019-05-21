@@ -113,3 +113,24 @@ div.puzzle-grid {
         }
     }
 }
+
+div.counts {
+    margin-left:150px;
+    display:flex;
+
+    div.miss-count, div.remaining-count {
+        font-weight:bold;
+        margin:18px;
+        border-radius: 20px;
+        color:white;
+        padding:8px 20px;;
+    }
+
+    div.miss-count {
+        background-color:red;
+    }
+
+    div.remaining-count {
+        background-color: $number-item-background-color;
+    }
+}

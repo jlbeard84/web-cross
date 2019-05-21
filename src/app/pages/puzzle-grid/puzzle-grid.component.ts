@@ -105,5 +105,7 @@ export class PuzzleGridComponent implements OnInit {
 
             this.puzzleGrid.push(gridItem);
         }
+
+        this.remainingDrawableCount = this.totalDrawableCount;
     }
 }

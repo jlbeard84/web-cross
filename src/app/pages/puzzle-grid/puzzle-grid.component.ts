@@ -75,6 +75,10 @@ export class PuzzleGridComponent implements OnInit, OnDestroy {
             this.missCount++;
         }
 
+        if (this.remainingDrawableCount === 0) {
+            this.stopTimer();
+        }
+
         cell.isSelected = true;
     }
 

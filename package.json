@@ -21,8 +21,6 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "core-js": "^2.5.4",
-    "moment": "^2.24.0",
-    "ngx-moment": "^3.4.0",
     "ngx-onsenui": "^7.0.0",
     "onsenui": "^2.10.8",
     "roboto-fontface": "^0.10.0",

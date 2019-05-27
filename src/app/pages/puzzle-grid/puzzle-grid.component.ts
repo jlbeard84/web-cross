@@ -22,8 +22,9 @@ export class PuzzleGridComponent implements OnInit, OnDestroy {
     public totalDrawableCount: number;
     public remainingDrawableCount: number;
     public missCount: number;
-    public elapsedTime: number = 0;
+    public elapsedTimeDisplay: string = '0:00';
 
+    private elapsedTime: number = 0;
     private timer: Observable<number> = null;
     private timerSubscription: Subscription = null;
 
@@ -96,6 +97,20 @@ export class PuzzleGridComponent implements OnInit, OnDestroy {
 
             this.timerSubscription = this.timer.subscribe((val) => {
                 this.elapsedTime = val + 1;
+
+                const time = this.elapsedTime;
+                const minutes = Math.floor(time / 60);
+                const seconds = time - minutes * 60;
+
+                let display = `${minutes}:`;
+
+                if (seconds < 10) {
+                    display = `${display}0`;
+                }
+
+                display = `${display}${seconds}`;
+
+                this.elapsedTimeDisplay = display;
             });
         }
     }

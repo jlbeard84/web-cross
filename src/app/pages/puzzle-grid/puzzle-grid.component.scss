@@ -114,16 +114,31 @@ div.puzzle-grid {
     }
 }
 
+div.timer {
+    margin-left:150px;
+    display:flex;
+
+
+}
+
 div.counts {
     margin-left:150px;
     display:flex;
 
-    div.miss-count, div.remaining-count {
+    div.miss-count, div.remaining-count, div.time {
         font-weight:bold;
-        margin:18px;
+        margin:18px 10px;
         border-radius: 20px;
         color:white;
-        padding:8px 20px;;
+        padding:8px 20px;
+    }
+
+    div.time {
+        margin-left:0;
+        background-color: green;
+        min-width:40px;
+        max-width:40px;
+        text-align:center;
     }
 
     div.miss-count {
